@@ -1,0 +1,29 @@
+public class Solution {
+    public int getLucky(String s, int k) {
+        StringBuilder numStr = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            int val = c - 'a' + 1; 
+            numStr.append(val);
+        }
+
+    
+        int sum = 0;
+        for (char c : numStr.toString().toCharArray()) {
+            sum += c - '0'; 
+            
+        }
+
+
+        while (--k > 0) {
+            int newSum = 0;
+            while (sum > 0) {
+                newSum += sum % 10;
+                sum /= 10;
+            }
+            sum = newSum;
+        }
+
+        return sum;
+    }
+
+}
